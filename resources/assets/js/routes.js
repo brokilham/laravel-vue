@@ -1,11 +1,17 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import BootstrapVue from 'bootstrap-vue'
 
 Vue.use(VueRouter)
+Vue.use(BootstrapVue)
 
 import DashboardComponent from './components/DashboardComponent.vue'
 import LoginComponent from './components/LoginComponent.vue'
 import LogoutComponent from './components/LogoutComponent.vue'
+
+// Containers
+import Full from './containers/Full.vue'
+
 import store from './store'
 
 const routes = [
@@ -16,9 +22,15 @@ const routes = [
     {
         path: '/dashboard',
         name: 'dashboard',
-        component: DashboardComponent,
+        component: Full,
         meta: { requiresAuth: true }
     },
+    /*{
+        path: '/dashboard',
+        name: 'dashboard',
+        component: DashboardComponent,
+        meta: { requiresAuth: true }
+    },*/
     {
         path: '/login',
         name: 'login',
