@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import nav from '../_nav'
+//import nav from '../_nav'
 import Header  from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import Sidebar from '../components/Sidebar.vue'
@@ -32,9 +32,21 @@ export default {
   },
   data () {
     return {
-      nav: nav.items
+     /* nav: nav.items,
+      items: []*/
+      nav: []
     }
-  },
+  }, 
+  methods: {
+    getSideBar: function () {
+        axios.get('/api/v1/menucontroller')
+            .then(response => this.nav = response.data)
+            .catch(error => console.log(error.response.data));
+    } 
+  },  
+   created: function () {
+    this.getSideBar();
+  }, 
   computed: {
     name () {
       return this.$route.name
